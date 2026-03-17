@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ado Ahi Rikardo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Inter:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:  #07070f;
+  --s1:  #0e0e1c;
+  --s2:  #13132a;
+  --s3:  #181838;
+  --bd:  rgba(120,80,255,.14);
+  --bd2: rgba(120,80,255,.08);
+  --tx:  #e4e0ff;
+  --t2:  #9d98c8;
+  --mu:  #5c5880;
+  --p:   #7c3aed;
+  --p2:  #8b5cf6;
+  --p3:  #a78bfa;
+  --p4:  #c4b5fd;
+  --pk:  #f472b6;
+  --gn:  #4ade80;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--bg);color:var(--tx);
+  font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  padding:30px 14px 56px;overflow-x:hidden;position:relative;
+}
+body::before{
+  content:'';position:fixed;width:800px;height:500px;
+  background:radial-gradient(ellipse,rgba(124,58,237,.09) 0%,transparent 65%);
+  top:-150px;left:50%;transform:translateX(-50%);pointer-events:none;z-index:0;
+}
+body::after{
+  content:'';position:fixed;width:360px;height:360px;
+  background:radial-gradient(circle,rgba(244,114,182,.05) 0%,transparent 70%);
+  bottom:-80px;right:-60px;pointer-events:none;z-index:0;
+}
+
+.wrapper{
+  width:100%;max-width:440px;
+  display:flex;flex-direction:column;gap:10px;
+  position:relative;z-index:1;
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ripple{0%{box-shadow:0 0 0 0 rgba(74,222,128,.45)}100%{box-shadow:0 0 0 7px rgba(74,222,128,0)}}
+
+.a0{animation:fadeUp .45s ease both}
+.a1{animation:fadeUp .45s .06s ease both}
+.a2{animation:fadeUp .45s .12s ease both}
+.a3{animation:fadeUp .45s .17s ease both}
+.a4{animation:fadeUp .45s .22s ease both}
+.a5{animation:fadeUp .45s .27s ease both}
+.a6{animation:fadeUp .45s .32s ease both}
+.a7{animation:fadeUp .45s .37s ease both}
+
+/* ── WELCOME ── */
+.welcome{text-align:center;padding:2px 0 4px}
+.wbox{
+  display:inline-block;background:var(--s1);
+  border:1px solid var(--bd);border-radius:14px;
+  padding:10px 28px 11px;position:relative;overflow:hidden;
+}
+.wbox::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:100px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--p3),transparent);
+}
+.wtitle{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--tx);display:block;margin-bottom:3px}
+.wsub{font-size:11.5px;color:var(--mu);letter-spacing:.3px;display:block}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(160deg,var(--s1) 0%,var(--s2) 100%);
+  border:1px solid var(--bd);border-radius:22px;
+  padding:28px 22px 22px;text-align:center;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:260px;height:1px;background:linear-gradient(90deg,transparent,var(--p2),transparent);
+}
+.hero::after{
+  content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);
+  width:320px;height:200px;
+  background:radial-gradient(ellipse,rgba(139,92,246,.09) 0%,transparent 70%);
+  pointer-events:none;
+}
+.avw{width:94px;height:94px;margin:0 auto 14px;border-radius:50%;padding:2.5px;background:linear-gradient(135deg,var(--p2),var(--pk));position:relative}
+.avw img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.avf{width:100%;height:100%;border-radius:50%;background:var(--s3);display:none;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:36px;color:var(--p3)}
+.avd{position:absolute;bottom:4px;right:4px;width:13px;height:13px;background:var(--gn);border-radius:50%;border:2.5px solid var(--s1);animation:ripple 1.8s infinite}
+.hname{font-family:'Syne',sans-serif;font-size:21px;font-weight:700;color:var(--tx);letter-spacing:-.2px;margin-bottom:7px}
+.arow{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:14px}
+.ali{font-size:10px;font-weight:500;letter-spacing:.6px;text-transform:uppercase;padding:3px 10px;border-radius:20px;border:1px solid rgba(167,139,250,.25);color:var(--p4);background:rgba(124,58,237,.1)}
+.hmeta{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.mitem{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--t2);background:var(--s3);border:1px solid var(--bd2);padding:4px 11px;border-radius:20px}
+.mlbl{color:var(--mu);font-size:10.5px;margin-right:2px}
+#clock{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:1.5px;color:var(--p3)}
+.msep{color:var(--mu);font-size:12px}
+.sptbtn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:9px 18px;border-radius:30px;
+  background:rgba(29,185,84,.12);border:1px solid rgba(29,185,84,.25);
+  text-decoration:none;color:var(--tx);transition:background .2s,transform .15s;
+}
+.sptbtn:hover{background:rgba(29,185,84,.2);transform:translateY(-1px)}
+.sptbtn img{width:17px;height:17px;filter:brightness(0) invert(1)}
+.sptname{font-size:12.5px;font-weight:600;display:block;color:#1DB954}
+.sptsub{font-size:10px;color:var(--mu);display:block}
+
+/* ── SECTION ── */
+.sec{background:var(--s1);border:1px solid var(--bd2);border-radius:18px;overflow:hidden}
+.shead{
+  font-family:'Syne',sans-serif;font-size:9.5px;font-weight:700;
+  letter-spacing:1.9px;text-transform:uppercase;color:var(--mu);
+  padding:14px 18px 0;margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.shead::after{content:'';flex:1;height:1px;background:var(--bd2)}
+.sbody{padding:0 18px 16px;display:flex;flex-direction:column;gap:12px}
+
+.aquote{
+  font-size:13px;font-style:italic;color:var(--t2);line-height:1.7;
+  padding:10px 14px;background:rgba(124,58,237,.06);border-radius:10px;
+  border-left:2px solid rgba(167,139,250,.3);
+}
+.irow{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--bd2)}
+.irow:last-child{border-bottom:none}
+.ico{width:32px;height:32px;border-radius:8px;background:var(--s3);border:1px solid var(--bd2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.ibd{flex:1;min-width:0}
+.ilb{font-size:10.5px;color:var(--mu);display:block;margin-bottom:2px}
+.ivl{font-size:13px;font-weight:500;color:var(--tx);display:block}
+.ial{font-size:13px;font-weight:500;color:var(--p3);text-decoration:none;transition:color .2s}
+.ial:hover{color:var(--p4)}
+.crow{display:flex;flex-wrap:wrap;gap:5px}
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:1px solid rgba(139,92,246,.2);color:var(--p3);background:rgba(124,58,237,.08)}
+.chip .d{width:4px;height:4px;border-radius:50%;background:var(--p3)}
+.trow{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.tag{font-size:11px;padding:2px 9px;border-radius:20px;background:var(--s3);border:1px solid var(--bd2);color:var(--t2)}
+
+/* ── LINKS ── */
+.llist{padding:0 12px 12px;display:flex;flex-direction:column;gap:5px}
+.lbtn{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 10px;border-radius:12px;
+  background:var(--s2);border:1px solid transparent;
+  text-decoration:none;color:var(--tx);
+  transition:background .2s,border-color .2s,transform .15s;
+}
+.lbtn:hover{background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.2);transform:translateY(-1px)}
+.lbtn:active{transform:translateY(0)}
+.lic{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
+.lic img{width:17px;height:17px;object-fit:contain;filter:brightness(0) invert(1)}
+.ltx{flex:1;min-width:0}
+.lnm{font-size:13px;font-weight:500;display:block}
+.lsb{font-size:10.5px;color:var(--mu);display:block;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lar{color:var(--mu);font-size:12px;flex-shrink:0}
+
+.c-ig{background:linear-gradient(135deg,#fd5949,#d6249f,#285aeb)}
+.c-fb{background:#1877f2}
+.c-tt{background:#010101;border:1px solid #1e1e1e}
+.c-bear{background:linear-gradient(135deg,#ff6b35,#f7931e)}
+.c-gh{background:#161b22;border:1px solid #30363d}
+.c-drive{background:linear-gradient(135deg,#9c6dff,#6d28d9)}
+.c-neo{background:linear-gradient(135deg,#00b4d8,#0077b6)}
+.c-radio{background:linear-gradient(135deg,#667eea,#764ba2)}
+.c-status{background:linear-gradient(135deg,#ff6b9d,#c44569)}
+
+/* ── ACCORDION ── */
+.accard{background:var(--s1);border:1px solid var(--bd2);border-radius:18px;overflow:hidden}
+.actog{
+  width:100%;display:flex;align-items:center;gap:11px;
+  padding:14px 16px;background:none;border:none;
+  color:var(--tx);cursor:pointer;text-align:left;transition:background .2s;
+}
+.actog:hover{background:rgba(124,58,237,.05)}
+.acico{font-size:18px;flex-shrink:0}
+.actxt{flex:1}
+.acnm{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;display:block;color:var(--tx)}
+.acsb{font-size:11px;color:var(--mu);display:block;margin-top:1px}
+.acbdg{font-size:10.5px;padding:2px 8px;border-radius:20px;background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.22);color:var(--p3);font-weight:600;flex-shrink:0}
+.acchv{color:var(--mu);font-size:11px;flex-shrink:0;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.acchv.open{transform:rotate(180deg)}
+.acpan{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.acin{border-top:1px solid var(--bd2);padding:14px 16px 16px;display:flex;flex-direction:column;gap:18px}
+
+.glbl{
+  font-family:'Syne',sans-serif;font-size:9px;font-weight:700;
+  letter-spacing:1.6px;text-transform:uppercase;color:var(--mu);
+  margin-bottom:9px;display:flex;align-items:center;gap:7px;
+}
+.glbl::after{content:'';flex:1;height:1px;background:var(--bd2)}
+.glbl span{white-space:nowrap}
+.gnote{
+  font-size:11.5px;color:var(--mu);font-style:italic;
+  margin-bottom:9px;line-height:1.5;
+  padding:7px 10px;background:rgba(124,58,237,.05);
+  border-radius:8px;border-left:2px solid rgba(167,139,250,.2);
+}
+.gent{display:flex;flex-direction:column;gap:9px}
+.ent{display:flex;align-items:flex-start;gap:9px}
+.eico{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.eico img{width:15px;height:15px;filter:brightness(0) invert(1)}
+.ebdy{flex:1}
+.enm{font-size:12.5px;font-weight:500;color:var(--tx);text-decoration:none;transition:color .2s;display:inline}
+a.enm:hover{color:var(--p3)}
+.enote{font-size:11px;color:var(--mu);margin-top:2px;line-height:1.5}
+.enred{font-size:11px;color:#f87171;margin-top:2px;font-style:italic}
+.bdg{display:inline-block;font-size:9px;font-weight:700;padding:1px 6px;border-radius:20px;margin-left:4px;vertical-align:middle}
+.bd-dead{background:rgba(239,68,68,.13);color:#f87171;border:1px solid rgba(239,68,68,.2)}
+.bd-rare{background:rgba(251,191,36,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.16)}
+.bd-pass{background:rgba(148,163,184,.1);color:#94a3b8;border:1px solid rgba(148,163,184,.16)}
+
+/* ── CREDITS ── */
+.credits{text-align:center;font-size:11px;color:var(--mu);margin-top:6px;line-height:1.9}
+.hrt{color:var(--pk)}
+.brand{color:var(--p3)}
+
+@media(max-width:440px){body{padding:22px 10px 48px}.hname{font-size:19px}}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<!-- ═══════════════ WELCOME ═══════════════ -->
+<div class="welcome a0">
+  <div class="wbox">
+    <span class="wtitle">&#128075;&#127997; Welcome!</span>
+    <span class="wsub">Selamat datang di halaman Webku</span>
+  </div>
+</div>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<div class="hero a1">
+  <div class="avw">
+    <img id="avImg" src="https://napoleon1244.github.io/profil.jpg" alt="Ado Ahi Rikardo">
+    <div class="avf" id="avFall">A</div>
+    <div class="avd"></div>
+  </div>
+  <h1 class="hname">Ado Ahi Rikardo</h1>
+  <div class="arow">
+    <span class="ali">Adolf Hans Reinhard</span>
+    <span class="ali">Verlanovich</span>
+  </div>
+  <div class="hmeta">
+    <span class="mitem">&#128205; Somewhere in Indonesia &#127470;&#127465;</span>
+    <span class="msep">&middot;</span>
+    <span class="mitem">
+      <span class="mlbl">WIB</span>
+      <span id="clock">--:--:--</span>
+    </span>
+  </div>
+  <a class="sptbtn" href="https://open.spotify.com/playlist/5Ox6LgIdOImzUKDKJA81yO?si=qbeL1998Sxq5WJnf2MgL3g" target="_blank" rel="noopener noreferrer">
+    <img src="https://cdn.simpleicons.org/spotify/white" alt="Spotify">
+    <div>
+      <span class="sptname">Playlist Caramelldansen</span>
+      <span class="sptsub">Daftar Putar Lagu Favorit</span>
+    </div>
+    <span style="color:var(--mu);font-size:12px;margin-left:4px">&#x2197;</span>
+  </a>
+</div>
+
+<!-- ═══════════════ ABOUT ME ═══════════════ -->
+<div class="sec a2">
+  <div class="shead">About Me</div>
+  <div class="sbody">
+
+    <p class="aquote">"Hanya seorang cowok pendiam dan pemalu di suatu tempat di Indonesia, tipikal cowok yang kekanak-kanakan."</p>
+
+    <div class="irow">
+      <div class="ico">&#127774;</div>
+      <div class="ibd">
+        <span class="ilb">Kepribadian</span>
+        <div class="crow">
+          <span class="chip"><span class="d"></span>Introvert</span>
+          <span class="chip"><span class="d"></span>Shy</span>
+          <span class="chip"><span class="d"></span>Childish</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="irow">
+      <div class="ico">&#127926;</div>
+      <div class="ibd">
+        <span class="ilb">Hobi</span>
+        <div class="trow">
+          <span class="tag">&#127911; Listen to music</span>
+          <span class="tag">&#128218; Reading</span>
+          <span class="tag">&#127918; Gaming</span>
+          <span class="tag">&#9997;&#65039; Writing</span>
+          <span class="tag">&#127912; Drawing</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="irow">
+      <div class="ico">&#127925;</div>
+      <div class="ibd">
+        <span class="ilb">Selera Musik</span>
+        <div class="trow">
+          <span class="tag">&#127925; Instrumental</span>
+          <span class="tag">&#9889; Upbeat (Pop &amp; Eurobeat)</span>
+          <span class="tag">&#127471;&#127477; Japanese Song (Pop &amp; Anisong)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="irow">
+      <div class="ico">&#127911;</div>
+      <div class="ibd">
+        <span class="ilb">Lagu Favorit</span>
+        <a class="ial" href="https://open.spotify.com/track/0bHzSGmHBbMbggcMqpBkiD" target="_blank" rel="noopener noreferrer">&#127925; Undertaker &middot; PeriTune &#x2197;</a><br>
+        <a class="ial" href="https://open.spotify.com/track/2H7PHVdQ3mXqEHXcvclTB0" target="_blank" rel="noopener noreferrer" style="margin-top:4px;display:inline-block">&#127925; Caramelldansen &middot; Caramella Girls &#x2197;</a>
+      </div>
+    </div>
+
+    <div class="irow">
+      <div class="ico">&#127800;</div>
+      <div class="ibd">
+        <span class="ilb">Karakter Waifu</span>
+        <a class="ial" href="https://stellasora.miraheze.org/wiki/Chitose" target="_blank" rel="noopener noreferrer">Chitose &mdash; Stella Sora &#x2197;</a>
+      </div>
+    </div>
+
+    <div class="irow">
+      <div class="ico">&#127918;</div>
+      <div class="ibd">
+        <span class="ilb">Game Favorit</span>
+        <a class="ial" href="https://osudroid.moe/" target="_blank" rel="noopener noreferrer">Osu!Droid &#x2197;</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ SOCIAL MEDIA ═══════════════ -->
+<div class="sec a3">
+  <div class="shead">Social Media</div>
+  <div class="llist">
+
+    <a class="lbtn" href="https://www.instagram.com/adoahirikardo.personalaccount?igsh=YTFmMndyYWhtaGZ1" target="_blank" rel="noopener noreferrer">
+      <div class="lic c-ig"><img src="https://cdn.simpleicons.org/instagram/white" alt="IG"></div>
+      <div class="ltx"><span class="lnm">Instagram</span><span class="lsb">@adoahirikardo &middot; Personal Account</span></div>
+      <span class="lar">&#x2197;</span>
+    </a>
+
+    <a class="lbtn" href="https://www.instagram.com/verlanovich?igsh=Z2QzeGwyc3puMWVv" target="_blank" rel="noopener noreferrer">
+      <div class="lic c-ig"><img src="https://cdn.simpleicons.org/instagram/white" alt="IG"></div>
+      <div class="ltx"><span class="lnm">Instagram</span><span class="lsb">@verlanovich &middot; Secondary Account</span></div>
+      <span class="lar">&#x2197;</span>
+    </a>
+
+    <a class="lbtn" href="https://www.instagram.com/akaaksj.kwwjw?igsh=YmJqMXczcnhkMHho" target="_blank" rel="noopener noreferrer">
+      <div class="lic c-ig"><img src="https://cdn.simpleicons.org/instagram/white" alt="IG"></div>
+      <div class="ltx"><span class="lnm">Instagram</span><span class="lsb">@akaaksj.kwwjw &middot; Third Account</span></div>
+      <span class="lar">&#x2197;</span>
+    </a>
+
+    <a class="lbtn" href="https://www.facebook.com/profile.php?id=61580465070735" target="_blank" rel="noopener noreferrer">
+      <div class="lic c-fb"><img src="https://cdn.simpleicons.org/facebook/white" alt="FB"></div>
+      <div class="ltx"><span class="lnm">Facebook</span><span class="lsb">Adolf Hans Reinhard</span></div>
+      <span class="lar">&#x2197;</span>
+    </a>
+
+    <a class="lbtn" href="https://www.tiktok.com/@theunprofessionalfemboy" target="_blank" rel="noopener noreferrer">
+      <div class="lic c-tt"><img src="https://cdn.simpleicons.org/tiktok/white" alt="TT"></div>
+      <div class="ltx"><span class="lnm">TikTok</span><span class="lsb">@theunprofessionalfemboy</span></div>
+      <span class="lar">&#x2197;</span>
+    </a>
+
+  </div>
+</div>
+
+<!-- ═══════════════ INTERNET CORNER ═══════════════ -->
+<div class="sec a4">
+  <div class="shead">Internet Corner</div>
+  <div class="llist">
+
+    <a class="lbtn" href="https://adoahirikardo.github.io/myprofilpage/" target="_blank" rel="noopener noreferrer">
+      <div class="lic" style="background:linear-gradient(135deg,var(--p),var(--p2));font-size:15px">&#127760;</div>
+      <div class="ltx"><span class="lnm">Web Card Hub</span><span class="lsb">adoahirikardo.github.io/myprofilpage</span></div>
+      <span class="lar">&#x2197;</span>
+    </a>
+
+    <a class="lbtn" href="https://verlanovich.neocities.org/" target="_blank" rel="noopener noreferrer">
+      <div class="lic c-neo"><img src="https://cdn.simpleicons.org/neocities/white" alt="Neocities"></div>
+      <div class="ltx"><span class="lnm">Neocities</span><span class="lsb">verlanovich.neocities.org</span></div>
+      <span class="lar">&#x2197;</span>
+    </a>
+
+    <a class="lbtn" href="https://verlanovich.nekoweb.org/" target="_blank" rel="noopener noreferrer">
+      <div class="lic" style="background:linear-gradient(135deg,#9d4edd,#7b2d8b);font-size:15px">&#127925;</div>
+      <div class="ltx"><span class="lnm">Music Log</span><span class="lsb">verlanovich.nekoweb.org</span></div>
+      <span class="lar">&#x2197;</span>
+    </a>
+
+    <a class="lbtn" href="https://status.cafe/users/verlanovich" target="_blank" rel="noopener noreferrer">
+      <div class="lic c-status" style="font-size:15px">&#9749;</div>
+      <div class="ltx"><span class="lnm">status.cafe</span><span class="lsb">verlanovich</span></div>
+      <span class="lar">&#x2197;</span>
+    </a>
+
+    <a class="lbtn" href="https://verlanovich.bearblog.dev" target="_blank" rel="noopener noreferrer">
+      <div class="lic c-bear"><img src="https://cdn.simpleicons.org/bearblog/white" alt="Blog"></div>
+      <div class="ltx"><span class="lnm">My Blog</span><span class="lsb">verlanovich.bearblog.dev</span></div>
+      <span class="lar">&#x2197;</span>
+    </a>
+
+  </div>
+</div>
+
+<!-- ═══════════════ LINKS LAINNYA ═══════════════ -->
+<div class="sec a5">
+  <div class="shead">Links Lainnya</div>
+  <div class="llist">
+
+    <a class="lbtn" href="https://napoleon1244.github.io/myRadio/" target="_blank" rel="noopener noreferrer">
+      <div class="lic c-radio" style="font-size:15px">&#128251;</div>
+      <div class="ltx"><span class="lnm">myRadio App</span><span class="lsb">napoleon1244.github.io/myRadio</span></div>
+      <span class="lar">&#x2197;</span>
+    </a>
+
+    <a class="lbtn" href="https://github.com/Napoleon1244/" target="_blank" rel="noopener noreferrer">
+      <div class="lic c-gh"><img src="https://cdn.simpleicons.org/github/white" alt="GH"></div>
+      <div class="ltx"><span class="lnm">GitHub</span><span class="lsb">Napoleon1244</span></div>
+      <span class="lar">&#x2197;</span>
+    </a>
+
+    <a class="lbtn" href="https://drive.google.com/drive/folders/13Fe_UIrD3ZLMp5ZBNeU174mJ85_3v1vm" target="_blank" rel="noopener noreferrer">
+      <div class="lic c-drive"><img src="https://cdn.simpleicons.org/googledrive/white" alt="Drive"></div>
+      <div class="ltx"><span class="lnm">My ART</span><span class="lsb">Koleksi Gambarku &middot; Google Drive</span></div>
+      <span class="lar">&#x2197;</span>
+    </a>
+
+  </div>
+</div>
+
+<!-- ═══════════════ OTHER ACCOUNTS ═══════════════ -->
+<div class="accard a6">
+  <button class="actog" id="accBtn">
+    <span class="acico">&#128268;</span>
+    <div class="actxt">
+      <span class="acnm">Other Accounts</span>
+      <span class="acsb">Seluruh Jejak Digital Akunku</span>
+    </div>
+    <span class="acbdg">8 akun</span>
+    <span class="acchv" id="accChev">&#9660;</span>
+  </button>
+
+  <div class="acpan" id="accPanel">
+    <div class="acin">
+
+      <!-- X / Twitter -->
+      <div>
+        <div class="glbl"><span>&#120143; X (Twitter)</span></div>
+        <div class="gnote">Sebenarnya jarang main X, lebih banyak diam aja.</div>
+        <div class="gent">
+          <div class="ent">
+            <div class="eico" style="background:#000;border:1px solid #222">
+              <img src="https://cdn.simpleicons.org/x/white" alt="X">
+            </div>
+            <div class="ebdy">
+              <a class="enm" href="https://x.com/ErlanovichPalsu?t=bi9sDXXUsM3nd3-pkYhXoA&s=09" target="_blank" rel="noopener noreferrer">@ErlanovichPalsu</a>
+              <span class="bdg bd-dead">Dead Account</span>
+            </div>
+          </div>
+          <div class="ent">
+            <div class="eico" style="background:#000;border:1px solid #222">
+              <img src="https://cdn.simpleicons.org/x/white" alt="X">
+            </div>
+            <div class="ebdy">
+              <a class="enm" href="https://x.com/IKiller43584?t=jmhBksr_k0EQJbnXR2FuKA&s=09" target="_blank" rel="noopener noreferrer">@IKiller43584</a>
+              <span class="bdg bd-rare">Sangat Jarang</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blogspot -->
+      <div>
+        <div class="glbl"><span>&#9997;&#65039; Blogspot</span></div>
+        <div class="gent">
+          <div class="ent">
+            <div class="eico" style="background:linear-gradient(135deg,#ff6b35,#f7931e)">
+              <img src="https://cdn.simpleicons.org/blogger/white" alt="Blogger">
+            </div>
+            <div class="ebdy">
+              <a class="enm" href="https://verlanovich.blogspot.com" target="_blank" rel="noopener noreferrer">verlanovich.blogspot.com</a>
+              <span class="bdg bd-dead">Dead Account</span>
+              <div class="enote">Pindah ke Bear Blog &mdash; lebih minimalis dan nyaman.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- status.cafe -->
+      <div>
+        <div class="glbl"><span>&#9749; status.cafe</span></div>
+        <div class="gent">
+          <div class="ent">
+            <div class="eico" style="background:linear-gradient(135deg,#ff6b9d,#c44569)">
+              <span style="font-size:14px">&#9749;</span>
+            </div>
+            <div class="ebdy">
+              <a class="enm" href="https://status.cafe/users/verlanovich" target="_blank" rel="noopener noreferrer">status.cafe/users/verlanovich</a>
+              <span class="bdg bd-rare">Sangat Jarang</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fediverse -->
+      <div>
+        <div class="glbl"><span>&#127760; Fediverse</span></div>
+        <div class="gnote">Sempat tertarik dengan internet Fediverse &mdash; jaringan sosial terdesentralisasi.</div>
+        <div class="gent">
+          <div class="ent">
+            <div class="eico" style="background:#563acc">
+              <img src="https://cdn.simpleicons.org/mastodon/white" alt="Mastodon">
+            </div>
+            <div class="ebdy">
+              <a class="enm" href="https://mastodon.social/@verlanovich" target="_blank" rel="noopener noreferrer">@verlanovich (mastodon.social)</a>
+              <span class="bdg bd-rare">Sangat Jarang</span>
+            </div>
+          </div>
+          <div class="ent">
+            <div class="eico" style="background:#2196F3">
+              <img src="https://cdn.simpleicons.org/pixelfed/white" alt="Pixelfed">
+            </div>
+            <div class="ebdy">
+              <span class="enm" style="cursor:default">Pixelfed</span>
+              <span class="bdg bd-dead">Dead Account</span>
+              <div class="enred">&#9888;&#65039; Link hilang &mdash; Aplikasi udah di hapus.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reddit -->
+      <div>
+        <div class="glbl"><span>&#128262; Reddit</span></div>
+        <div class="gent">
+          <div class="ent">
+            <div class="eico" style="background:#FF4500">
+              <img src="https://cdn.simpleicons.org/reddit/white" alt="Reddit">
+            </div>
+            <div class="ebdy">
+              <a class="enm" href="https://www.reddit.com/user/Clear_Sand1644/" target="_blank" rel="noopener noreferrer">u/Clear_Sand1644</a>
+              <span class="bdg bd-dead">Dead Account</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- YouTube -->
+      <div>
+        <div class="glbl"><span>&#9654;&#65039; YouTube</span></div>
+        <div class="gent">
+          <div class="ent">
+            <div class="eico" style="background:#FF0000">
+              <img src="https://cdn.simpleicons.org/youtube/white" alt="YouTube">
+            </div>
+            <div class="ebdy">
+              <a class="enm" href="https://m.youtube.com/channel/UC8PP-P-gv55wcG70LreoTaQ" target="_blank" rel="noopener noreferrer">YouTube Channel</a>
+              <span class="bdg bd-pass">Pasif</span>
+              <div class="enote">Untuk nonton aja.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ CREDITS ═══════════════ -->
+<div class="credits a7">
+  Dibuat Dengan <span class="hrt">&#10084;&#65039;</span> Olehku Dengan <span class="brand">Claude AI</span> (Anthropic)
+</div>
+
+</div>
+
+<script>
+// Avatar fallback
+(function(){
+  var i=document.getElementById('avImg'),f=document.getElementById('avFall');
+  i.onerror=function(){i.style.display='none';f.style.display='flex';};
+})();
+
+// WIB Clock
+function tick(){
+  var u=new Date(),w=new Date(u.getTime()+u.getTimezoneOffset()*60000+7*3600000);
+  document.getElementById('clock').textContent=
+    String(w.getHours()).padStart(2,'0')+':'+
+    String(w.getMinutes()).padStart(2,'0')+':'+
+    String(w.getSeconds()).padStart(2,'0');
+}
+tick();
+setInterval(tick,1000);
+
+// Accordion
+(function(){
+  var btn=document.getElementById('accBtn'),
+      pan=document.getElementById('accPanel'),
+      chv=document.getElementById('accChev'),
+      open=false;
+  btn.addEventListener('click',function(){
+    open=!open;
+    pan.style.maxHeight=open?pan.scrollHeight+'px':'0';
+    chv.classList.toggle('open',open);
+  });
+})();
+</script>
+</body>
+</html>
