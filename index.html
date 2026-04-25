@@ -217,13 +217,17 @@ a.enm:hover{color:var(--p3)}
       <span id="clock">--:--:--</span>
     </span>
   </div>
-  <a class="sptbtn" href="https://open.spotify.com/playlist/5Ox6LgIdOImzUKDKJA81yO?si=qbeL1998Sxq5WJnf2MgL3g" target="_blank" rel="noopener noreferrer">
+  <a class="sptbtn" id="lastfmWidget" href="https://www.last.fm/user/AdolfeHans" target="_blank" rel="noopener noreferrer">
     <div>
-      <span class="sptname">Playlist Caramelldansen</span>
-      <span class="sptsub">Daftar Putar Lagu Favorit</span>
+      <span class="sptname" id="lfmTrack">Memuat…</span>
+      <span class="sptsub" id="lfmArtist">Last.fm Recent Track</span>
     </div>
-    <span style="color:var(--mu);font-size:11px;margin-left:4px">&#x2197;</span>
+    <span style="color:var(--mu);font-size:11px;margin-left:4px" id="lfmArrow">&#x2197;</span>
   </a>
+  <style>
+    #lfmIndicator{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gn);margin-right:6px;animation:ripple 1.8s infinite;vertical-align:middle}
+    #lfmTrack{display:flex;align-items:center;justify-content:center}
+  </style>
 </div>
 
 <!-- ═══════════════ ABOUT ME ═══════════════ -->
@@ -256,16 +260,30 @@ a.enm:hover{color:var(--p3)}
     <div class="irow">
       <span class="ilb">Selera Musik</span>
       <div class="trow">
-        <span class="tag">Instrumental</span>
-        <span class="tag">Upbeat &mdash; Pop &middot; Eurobeat &middot; Bubblegum</span>
-        <span class="tag">Japanese Song &mdash; Pop &middot; Anisong</span>
+        <span class="tag">Unspecific</span>
+        <span class="tag">Mostly J-Music</span>
+        <span class="tag">Anything with a catchy beat</span>
       </div>
     </div>
 
     <div class="irow">
-      <span class="ilb">Lagu Favorit</span>
-      <a class="ial" href="https://www.youtube.com/watch?v=AI7WEn6X-Ng" target="_blank" rel="noopener noreferrer">Undertaker &middot; PeriTune &#x2197;</a>
-      <a class="ial" href="https://www.youtube.com/watch?v=6-8E4Nirh9s" target="_blank" rel="noopener noreferrer" style="margin-top:4px">Caramelldansen &middot; Caramella Girls &#x2197;</a>
+      <span class="ilb">Daftar Lagu & Artis Favorit</span>
+      <span class="ilb" style="margin-top:4px">Lagu Favorit</span>
+      <div style="display:flex;flex-direction:column;gap:5px;padding:2px 0 10px;">
+        <span style="font-size:13px;font-weight:500;color:var(--tx);">Rabbit Hole · DECO*27</span>
+        <span style="font-size:13px;font-weight:500;color:var(--tx);">ROSE of the LAMP · アキ・ローゼンタール</span>
+        <span style="font-size:13px;font-weight:500;color:var(--tx);">Cat Loving · Moimi Kashii</span>
+        <span style="font-size:13px;font-weight:500;color:var(--tx);">Spoiled princess · Fujiwo</span>
+        <span style="font-size:13px;font-weight:500;color:var(--tx);">Undertaker · PeriTune</span>
+        <span style="font-size:13px;font-weight:500;color:var(--tx);">Miss S's mimicry -Black Butterfly- · Yura Hatsuki, Toki no Shikkoku, Symholic</span>
+        <span style="font-size:13px;font-weight:500;color:var(--tx);">Seishojo Ryoiki · ALI PROJECT</span>
+      </div>
+      <span class="ilb">Artis Favorit</span>
+      <div class="trow">
+        <span class="tag">Deco*27</span>
+        <span class="tag">Yura Hatsuki</span>
+        <span class="tag">PeriTune</span>
+      </div>
     </div>
 
     <div class="irow">
@@ -609,6 +627,34 @@ setInterval(tick,1000);
     pan.style.maxHeight=open?pan.scrollHeight+'px':'0';
     chv.classList.toggle('open',open);
   });
+})();
+
+// Last.fm Recent Track
+(function(){
+  var apiKey='b4c6b4e9090cb427b1a0affc2d2be12a',
+      user='AdolfeHans',
+      trackEl=document.getElementById('lfmTrack'),
+      artistEl=document.getElementById('lfmArtist'),
+      widget=document.getElementById('lastfmWidget');
+  fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user='+user+'&api_key='+apiKey+'&format=json&limit=1')
+    .then(function(r){return r.json();})
+    .then(function(d){
+      var tracks=d.recenttracks&&d.recenttracks.track;
+      if(!tracks||!tracks.length){throw new Error('no tracks');}
+      var t=Array.isArray(tracks)?tracks[0]:tracks;
+      var name=t.name||'Unknown Track';
+      var artist=t.artist&&t.artist['#text']||t.artist||'Unknown Artist';
+      var isNow=t['@attr']&&t['@attr'].nowplaying==='true';
+      var ind=isNow?'<span id="lfmIndicator"></span>':'';
+      trackEl.innerHTML=ind+name;
+      artistEl.textContent=(isNow?'Now Playing — ':'Last Played — ')+artist;
+      if(t.url){widget.href=t.url;}
+    })
+    .catch(function(){
+      trackEl.textContent='AdolfeHans';
+      artistEl.textContent='Last.fm Profile';
+      widget.href='https://www.last.fm/user/AdolfeHans';
+    });
 })();
 </script>
 </body>
